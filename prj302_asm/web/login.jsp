@@ -8,12 +8,19 @@
 <body>
     <div class="container">
         <h2>Đăng nhập</h2>
-        <% if (request.getParameter("error") != null) { %>
-            <p class="error-message">Tên người dùng hoặc mật khẩu không đúng!</p>
-        <% } %>
+        <% 
+            String error = request.getParameter("error");
+            if (error != null) {
+                if (error.equals("unauthorized")) {
+                    out.println("<p class='error-message'>Bạn không có quyền truy cập trang này!</p>");
+                } else {
+                    out.println("<p class='error-message'>Tên đăng nhập hoặc mật khẩu không đúng!</p>");
+                }
+            }
+        %>
         <form action="LoginServlet" method="post">
             <div class="form-group">
-                <label>Tên người dùng:</label>
+                <label>Tên đăng nhập:</label>
                 <input type="text" name="username" required>
             </div>
             <div class="form-group">

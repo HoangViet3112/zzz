@@ -20,10 +20,10 @@
         <table>
             <tr>
                 <th>UserID</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>Department</th>
+                <th>Tên đăng nhập</th>
+                <th>Mật khẩu</th>
+                <th>Vai trò</th>
+                <th>Phòng ban</th>
             </tr>
             <%
                 try (Connection con = DBConnection.getConnection()) {
