@@ -2,25 +2,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Đăng nhập - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Đăng nhập</h2>
         <% if (request.getParameter("error") != null) { %>
-            <p class="error-message">Invalid username or password!</p>
+            <p class="error-message">Tên người dùng hoặc mật khẩu không đúng!</p>
         <% } %>
         <form action="LoginServlet" method="post">
             <div class="form-group">
-                <label>Username:</label>
+                <label>Tên người dùng:</label>
                 <input type="text" name="username" required>
             </div>
             <div class="form-group">
-                <label>Password:</label>
+                <label>Mật khẩu:</label>
                 <input type="password" name="password" required>
             </div>
-            <input type="submit" value="Login">
+            <input type="submit" value="Đăng nhập">
         </form>
     </div>
 </body>

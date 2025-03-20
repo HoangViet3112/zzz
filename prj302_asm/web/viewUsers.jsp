@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee List</title>
+    <title>Danh sách nhân viên - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Employee List</h2>
+        <h2>Danh sách nhân viên</h2>
         <%
             String role = (String) session.getAttribute("role");
             if (role == null || !role.equals("DepartmentManager")) {
@@ -43,11 +43,12 @@
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    out.println("<p style='color:red'>Error: " + e.getMessage() + "</p>");
+                    out.println("<p class='error-message'>Lỗi: " + e.getMessage() + "</p>");
                 }
             %>
         </table>
-        <a href="viewAgenda.jsp">Back to Agenda</a> | <a href="LogoutServlet">Logout</a>
+        <a href="viewAgenda.jsp">Quay lại lịch nghỉ</a>
+        <a href="LogoutServlet">Đăng xuất</a>
     </div>
 </body>
 </html>

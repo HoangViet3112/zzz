@@ -2,31 +2,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Leave Request</title>
+    <title>Tạo đơn xin nghỉ - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Create Leave Request</h2>
+        <h2>Tạo đơn xin nghỉ</h2>
         <% if (request.getParameter("success") != null) { %>
-            <p style="color:green">Leave request submitted successfully!</p>
+            <p style="color: green; margin-bottom: 15px;">Đơn xin nghỉ đã được gửi thành công!</p>
         <% } %>
         <form action="CreateRequestServlet" method="post">
             <div class="form-group">
-                <label>From Date:</label>
+                <label>Từ ngày:</label>
                 <input type="date" name="fromDate" required>
             </div>
             <div class="form-group">
-                <label>To Date:</label>
+                <label>Đến ngày:</label>
                 <input type="date" name="toDate" required>
             </div>
             <div class="form-group">
-                <label>Reason:</label>
+                <label>Lý do:</label>
                 <input type="text" name="reason" required>
             </div>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Gửi">
         </form>
-        <a href="LogoutServlet">Logout</a>
+        <a href="LogoutServlet">Đăng xuất</a>
     </div>
 </body>
 </html>

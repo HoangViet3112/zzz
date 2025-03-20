@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Approve Requests</title>
+    <title>Duyệt đơn xin nghỉ - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Approve Leave Requests</h2>
+        <h2>Duyệt đơn xin nghỉ</h2>
         <table>
             <tr>
                 <th>RequestID</th>
@@ -43,11 +43,11 @@
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    out.println("<p style='color:red'>Error: " + e.getMessage() + "</p>");
+                    out.println("<p class='error-message'>Lỗi: " + e.getMessage() + "</p>");
                 }
             %>
         </table>
-        <a href="LogoutServlet">Logout</a>
+        <a href="LogoutServlet">Đăng xuất</a>
     </div>
 </body>
 </html>

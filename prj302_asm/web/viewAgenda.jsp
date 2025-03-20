@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Leave Agenda</title>
+    <title>Lịch nghỉ của nhân viên - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Leave Agenda</h2>
+        <h2>Lịch nghỉ của nhân viên</h2>
         <table>
             <tr>
                 <th>RequestID</th>
@@ -39,11 +39,12 @@
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    out.println("<p style='color:red'>Error: " + e.getMessage() + "</p>");
+                    out.println("<p class='error-message'>Lỗi: " + e.getMessage() + "</p>");
                 }
             %>
         </table>
-        <a href="viewUsers.jsp">View Employees</a> | <a href="LogoutServlet">Logout</a>
+        <a href="viewUsers.jsp">Xem danh sách nhân viên</a>
+        <a href="LogoutServlet">Đăng xuất</a>
     </div>
 </body>
 </html>

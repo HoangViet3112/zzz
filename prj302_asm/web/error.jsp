@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Error</title>
+    <title>Lỗi - PRJ302 ASM</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>An Error Occurred</h2>
-        <p style="color:red"><%= request.getParameter("message") %></p>
-        <a href="login.jsp">Back to Login</a>
+        <h2>Đã xảy ra lỗi</h2>
+        <p class="error-message"><%= request.getParameter("message") %></p>
+        <a href="login.jsp">Quay lại đăng nhập</a>
     </div>
 </body>
 </html>
