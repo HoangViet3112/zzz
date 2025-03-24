@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="com.prj302.dao.DBConnection" %>
+<%@ page import="com.prj302.servlet.ViewLeavesServlet.LeaveRequest" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,32 +18,32 @@
                 <th>ToDate</th>
                 <th>Reason</th>
                 <th>Status</th>
+                <th>Processed By</th>
             </tr>
             <%
-                try (Connection con = DBConnection.getConnection()) {
-                    String sql = "SELECT r.RequestID, u.Username, r.FromDate, r.ToDate, r.Reason, r.Status " +
-                                 "FROM Requests r JOIN Users u ON r.UserID = u.UserID";
-                    try (PreparedStatement ps = con.prepareStatement(sql)) {
-                        try (ResultSet rs = ps.executeQuery()) {
-                            while (rs.next()) {
-                                out.println("<tr>");
-                                out.println("<td>" + rs.getInt("RequestID") + "</td>");
-                                out.println("<td>" + rs.getString("Username") + "</td>");
-                                out.println("<td>" + rs.getDate("FromDate") + "</td>");
-                                out.println("<td>" + rs.getDate("ToDate") + "</td>");
-                                out.println("<td>" + rs.getString("Reason") + "</td>");
-                                out.println("<td>" + rs.getString("Status") + "</td>");
-                                out.println("</tr>");
-                            }
-                        }
+                List<LeaveRequest> allRequests = (List<LeaveRequest>) request.getAttribute("allRequests");
+                if (allRequests != null) {
+                    for (LeaveRequest req : allRequests) {
+                        out.println("<tr>");
+                        out.println("<td>" + req.getRequestID() + "</td>");
+                        out.println("<td>" + req.getUsername() + "</td>");
+                        out.println("<td>" + req.getFromDate() + "</td>");
+                        out.println("<td>" + req.getToDate() + "</td>");
+                        out.println("<td>" + req.getReason() + "</td>");
+                        out.println("<td>" + req.getStatus() + "</td>");
+                        out.println("<td>" + (req.getProcessedBy() != null ? req.getProcessedBy() : "Not processed") + "</td>");
+                        out.println("</tr>");
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    out.println("<p class='error-message'>Lỗi: " + e.getMessage() + "</p>");
                 }
             %>
         </table>
         <a href="viewUsers.jsp">Xem danh sách nhân viên</a>
+        <%
+            String role = (String) session.getAttribute("role");
+            if ("DirectManager".equals(role)) {
+                out.println("<a href='AgendaServlet'>Duyệt đơn xin nghỉ</a>");
+            }
+        %>
         <a href="LogoutServlet">Đăng xuất</a>
     </div>
 </body>
